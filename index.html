@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tes Kasir</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+</head>
+<body class="bg-light">
+<div id="app">
+    <nav class="navbar navbar-expand navbar-dark bg-primary mb-1">
+        <div class="nav navbar-nav">
+            <a class="navbar-brand" href="#">{{ title }}</a>
+        </div>
+    </nav>
+    <main class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 offset-sm-1">
+
+                    <!--card-->
+                    <div class="card shadow">
+                        <div class="card-header bg-primary text-white">Struk Belanja Toko Mainan Serba Ceban</div>
+                        <div class="card-body">
+                            <form @submit.prevent="buatStruk">
+                                <div class="form-group">
+                                    <input v-model="namaKasir"
+                                           type="text"
+                                           class="form-control"
+                                           placeholder="Masukkan Nama Kasir"
+                                           required>
+                                </div>
+                                <div class="form-group">
+                                    <input v-model="kodeBarang"
+                                           type="text"
+                                           class="form-control"
+                                           placeholder="Masukkan Kode Barang"
+                                           required>
+                                </div>
+                                <div class="form-group">
+                                    <input v-model="hargaBarang"
+                                           type="number"
+                                           class="form-control"
+                                           placeholder="Masukkan Harga Barang"
+                                           required>
+                                </div>
+                                <div class="form-group">
+                                    <input v-model="jumlahBeli"
+                                           type="number"
+                                           class="form-control"
+                                           placeholder="Masukkan Jumlah Beli"
+                                           required>
+                                </div>
+                                <div class="d-flex justify-content-end">
+                                    <button @click="bersihkanData"
+                                            type="button"
+                                            class="btn btn-outline-primary mr-2"
+                                            style="min-width: 100px">
+                                        Bersihkan
+                                    </button>
+                                    <button type="submit"
+                                            class="btn btn-primary"
+                                            style="min-width: 100px">
+                                        Hitung
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!--struk-->
+                    <div class="mt-5" v-if="tampilkanStruk">
+                        <hr>
+                        <p class="text-center font-weight-bold">Struk Belanja Mainan Serba Ceban</p>
+                        <hr>
+                        <table class="table table-borderless">
+                            <tr>
+                                <th style="width: 20%">Nama Kasir</th>
+                                <td style="width:2px">:</td>
+                                <td class="text-capitalize">{{ namaKasir }}</td>
+                            </tr>
+                            <tr>
+                                <th>Kode Barang</th>
+                                <td style="width:2px">:</td>
+                                <td>{{ kodeBarang }}</td>
+                            </tr>
+                            <tr>
+                                <th>Harga Barang</th>
+                                <td style="width:2px">:</td>
+                                <td>{{ hargaBarangFormatted }}</td>
+                            </tr>
+                            <tr>
+                                <th>Jumlah Beli</th>
+                                <td style="width:2px">:</td>
+                                <td class="text-capitalize">{{ jumlahBeli }}</td>
+                            </tr>
+                            <tr style="border-top: 1px solid #c4c4c4 !important; border-bottom: 1px solid #c4c4c4 !important;">
+                                <th>Total Harga</th>
+                                <td style="width:2px">:</td>
+                                <td class="text-capitalize">{{ totalHargaFormatted }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<script src="vue.js"></script>
+<script src="App.js"></script>
+</body>
+</html>
